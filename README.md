@@ -77,7 +77,7 @@ Os comandos apresentados abaixo são para configuração do seu usuário e de se
 
 Troque a string "username" para o nome de seu usuário.
 
-```
+```git
     git config --global user.name "username"
 ```
 
