@@ -2,9 +2,9 @@
 
 
 
-Bom dia, boa tarde e boa noite a quem estiver lendo essa sinjela documentação. Este repositório está sendo criado e posteriormente melhorado com o intuito principal de estudos e de referencias futuras da minha pessoa e claro, de quem mais se interessar por esse repositório.
+Bom dia, boa tarde e boa noite a quem estiver lendo essa sinjela documentação. Este repositório está sendo criado e posteriormente melhorado com o intuito principal de estudos e de referencias futuras para minha pessoa e claro e de quem mais se interessar.
 
-Segue a estrutura do documento e o que será nosso onjeto de estudo a primeiro momento. 
+Segue a estrutura do documento: 
 
 - [Git](#git)
   - [Configurando o git](#configurando-o-git)
@@ -63,30 +63,30 @@ Segue a estrutura do documento e o que será nosso onjeto de estudo a primeiro m
 
 ## Configurando o git
 
-O primeiro passo que todos nós damos logo após baixar uma ferramenta é instalá-la e configura-la, com o git não é diferente. Segue abaixo alguns comandos que podem ser usados para configurar o git a primeiro momento.
+Depois de baixado, precisamos instalar e configurar o git. Abaixo foram listados comandos que podem ser usados para configurar o git a primeiro momento.
 
-O git trabalha com configurações com três diferentes escopos de atuação, como veremos abaixo:
+O git trabalha as configurações em três diferentes escopos de atuação:
 
-1. --system: válido para todos os usuários no sistema e todos os seus repositórios.
-2. --global: válido somente para seu usuário e os repositórios desse usuário.
-3. config: válido somente para o repositório que se está executando esse comando.
+1. --system: válido para todos os usuários no sistema e todos os seus repositórios;
+2. --global: válido somente para seu usuário e os repositórios desse usuário;
+3. config: válido somente para o repositório que se está executando esse comando;
 
-Os comandos apresentados abaixo são para configuração do seu usuário e de seus repositórios.
+A seguir eu tentei listar de forma simples três comandos que podemos usar para configurar username, email e o editor principal que podemos usar no git, lembrando que este ultimo pode ser configurado no momento da instalação.
 
 ### Configurando usuário/username git
 
-Troque a string "username" para o nome de seu usuário.
+Troque a string "<username>" pelo nome de seu usuário. Lembrando que, ao utilizar o parametro --global estamos configurando este usuário para todos respositórios do usuário do computador. 
 
-```git
-    git config --global user.name "username"
+```
+    git config --global user.name "<username>"
 ```
 
 ### Configurando email
 
-
+Troque a string "<exemple@email.com>" pelo seu email. 
 
 ```
-    git config --global user.email "exemple@email.com"
+    git config --global user.email "<exemple@email.com>"
 ```
 
 ### Configurar editor principal do git
