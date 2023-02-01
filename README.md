@@ -73,9 +73,11 @@ O git trabalha as configurações em três diferentes escopos de atuação:
 
 A seguir eu tentei listar de forma simples três comandos que podemos usar para configurar username, email e o editor principal que podemos usar no git, lembrando que este ultimo pode ser configurado no momento da instalação.
 
+É uma boa ideia se apresentar ao git com seu nome de usuário e seu email antes de fazer qualquer alteração. A maneira mais fácil de fazer isso é com os próximos dois comandos.
+
 ### Configurando usuário/username git
 
-Troque a string "<username>" pelo nome de seu usuário. Lembrando que, ao utilizar o parametro --global estamos configurando este usuário para todos respositórios do usuário do computador. 
+Troque a string "< username >" pelo nome de seu usuário. Lembrando que, ao utilizar o parametro --global estamos configurando este usuário para todos respositórios do usuário do computador. 
 
 ```
     git config --global user.name "<username>"
@@ -83,7 +85,7 @@ Troque a string "<username>" pelo nome de seu usuário. Lembrando que, ao utiliz
 
 ### Configurando email
 
-Troque a string "<exemple@email.com>" pelo seu email. 
+Troque a string "< exemple@email.com >" pelo seu email. 
 
 ```
     git config --global user.email "<exemple@email.com>"
@@ -91,12 +93,17 @@ Troque a string "<exemple@email.com>" pelo seu email.
 
 ### Configurar editor principal do git
 
+Esse passo é importante caso se queira usar um editor de texto diferente do padrão do git. Para fazer isso basta trocar < editor > pelo nome do seu editor favorito.
+
 ```
     git config --global core.editor <editor>
 ```
 
 ### Exibe usuário configurado no git
 
+Esse e os próximos dois comandos funcionam como uma checagem, para vermos se está tudo Ok com as informações que acabamos de configurar. 
+
+No comando abaixo exibimos o nome do nosso usuário
 
 ```
     git config user.name
@@ -104,11 +111,15 @@ Troque a string "<exemple@email.com>" pelo seu email.
 
 ### Exibe email configurado no git
 
+Já no comando abaixo, exibimos o email do usuário que foi configurado.
+
 ```
     git config user.email
 ```
 
 ### Exibe todas as configurações do git
+
+Com o comando abaixo podemos exibir todas as configurações do nosso usuário Git.
 
 ```
     git config --list
@@ -117,7 +128,11 @@ Troque a string "<exemple@email.com>" pelo seu email.
 
 ## Inicializando um repositorio
 
+Passando da etapa inicial de instalar e configurar o Git iremos bricar agora com repositórios. Como podemos criar um repositório na nossa máquina? Ao criá-lo já podemos fazer um commit? Temos que configurar algo a mais? Essas são uma das duvidas iniciais que eu tive quando comecei a estudar git e talvez sejam duvidas comuns entre jovens desenvolvedores que estão dando seus primeiros passos. Enfim, abaixo listei alguns comandos que são como "rituais" que devemos seguir para criar e configurar um repositório usando o Git. Vamos lá!
+
 ### Criar uma pasta
+
+Primeiro iremos criar um diretório que servirá como base para nosso repositório. Lembrando que o comando abaixo não é necessariamente um comando git, mas sim um comando tipico do um terminal linux.
 
 ```
     mkdir <nome da pasta>
@@ -125,27 +140,72 @@ Troque a string "<exemple@email.com>" pelo seu email.
 
 ### Inicializando repositorio
 
-Depois de entrar na página use:
+Digamos que no passo acima criamos um diretorio chamado rep-test com o comando `mkdir rep-test`, ainda com a janela do terminal aberta termos que entrar nesse diretório usando o comando `cd rep-test`. Logo após fazermos isso estaremos dentro de nada mais nada menos do que uma pasta vazia. Para transformar esta página em um repositório usamos o comando abaixo.
 
 ```
     git init
 ```
 
+Logo após executar esse comando, voce irá receber uma mensagem parecida com essa: 
+
+`Initialized empty Git repository in C:/Users/Leonardo/Desktop/rep-test/.git/`
+
+O que acabamos de fazer foi inicializar um repositório vazio na nossa máquina e deixá-lo pronto para iniciar nossos trabalhos de controle de versão da nossa aplicação.
+
 ## Manipulando um repositorio
+
+As coisas estão fáceis até agora e adivinha, irão continuar fáceis. O que vamos fazer nesses próximos passos é lidar com um fluxo simples de controle de versão do git: verificando o que foi alterado, adicionandos nossos arquivos modificados na zona de staged e, finalmente fazendo nossos tão famigerados commits.
 
 ### Reportar status do repositorio
 
+Olha, logo após adicionarmos ou modificarmos um ou vários arquivos do nosso projeto podemos listar todos os arquivos que, de fato, sofreram alguma modificação usando o seguinte comando: 
 
 ```
     git status
 ```
 
+Então, digamos que queremos adicionar um arquivo chamado teste.txt no nosso repositório e fazê-lo ter uma mensagem "testando o comando git status" basta digitarmos no terminal:
+
+`echo "Testando o comando git status" >> teste.txt`
+
+Logo depois de executarmos o comando acima veremos que ele já aparece na nossa arvore do respositório como um arquivo adicionado, para ver isso basta executar o comando `git status`. Uma mensagem parecida com a seguinte será exibida: 
+
+```
+    On branch master
+
+    No commits yet
+
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+            teste.txt
+
+    nothing added to commit but untracked files present (use "git add" to track)
+```
+
+Viram? Nosso arquivo apareceu logo abaixo da mensagem `(use "git add <file>..." to include in what will be committed)` e essa mensagem merece ser lida e significada, porque agora, se seguirmos o que essa mensagem nos diz veremos que ela nos pede para prepararmos nosso arquivo para ser commitado. Então vamos lá!
+
 ### Adicionar um arquivo ou arquivos em um grupo de versionamento
 
+Lembra do nosso arquivo teste.txt? O que devemos fazer com ele para que possamos monitorá-lo com nosso versionador de código? É isso ai, temos que executar o comando abaixo. Bora lá, executar o comando pra ver o que acontece.
 
 ```
-    git add
+    git add <nome do arquivo>
 ```
+
+Ué, mas não aconteceu nada. Será que deu alguma coisa errada? Que tal executar o comando `git status` novamente? Provavelmente apareceu no seu terminal algo parecido com:
+
+```
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   teste.txt
+
+```
+
+Parece que algo de diferente foi exibido. Vamos ver o que foi? Então, logo abaixo da mensagem `Changes to be commited:` vemos o nosso arquivo novamente. E ai, o que aconteceu? O que aconteceu foi que seu arquivo teste.txt digievoluiu de untracked file para ready to commit file (arquivo pronto para ser commitado). E ai, o que eu faço agora? Simples, commita ele ... o que pode dar de errado? (rs)
 
 ### Commitar um arquivo ou diretorio
 
