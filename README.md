@@ -209,32 +209,65 @@ Parece que algo de diferente foi exibido. Vamos ver o que foi? Então, logo abai
 
 ### Commitar um arquivo ou diretorio
 
+Olha só, chegamos no tão famigerado commit, e ai, o que ele faz? Bem, quando commitamos um arquivo ou um conjunto de arquivos estamos criando um screenshot daquele conjunto de arquivos, mostrando pro git o que está diferente entre ele e uma versão mais antiga dele. Lembrando que todo commit é guardado em um histórico, que pode ser lido e, se algum commit foi feito de maneira errada ou gerou algum bug, tudo pode ser voltado atrás, quando tudo estava funcionando lindamente bem (ou quase ...)
 
-Avisa ao git para criar uma imagem/snapshop do status daquele arquivo
+O comando para commitar é o seguinte: 
 
 ```
     git commit -m <filename>
 ```
+
+Vamos praticar usando o nosso exemplo de antes, o tal do teste.txt? Pois bem, execute ai no seu terminal o comando `git commit -m "Esse é meu primeiro commit no arquivo teste.txt"`. Olha só, e ai, o que acontece agora? 
+
+Provavelmente, ao teclar ENTER, será mostrada uma mensagem parecida com a seguinte no seu terminal:
+
+```
+[master (root-commit) fa1a61d] Este é meu primeiro commit no arquivo teste.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 teste.txt
+```
+
+Pronto, commit feito! Agora já pode partir e implementar novas funcionalidades, criar novos módulos ou novas interfaces. Se seguir esse ritualzinho básico de `git status`, `git add` e `git commit` voce já faz muita coisa. 
+
+Conselho, dê uma olhada na documentação do comando git commit e estuda o que é esse parametro `-m` e vê se ele é o unico parametro que pode ser usado nesse comando. 
+
+
 ### Mostra todos os commits já feitos
 
+Imaginemos aquele cenário lindo, em que você implementou várias funcionalidades em vários arquivos diferentes e, do nada, vem na sua cabeça que você não lembra quando, onde ou se, fez determinada alteração no código que pode te gerar alguns problemas no futuro. Qual tal listar todos os commits que você já fez?  
 
-Mostra as modificações que ja foram realizadas no nosso repositorio
+O comando `git log` lista todos os commits que voce já fez naquele repositório (ou branch ...). Executa ai no seu terminal o comando `git log` e vê o que aparece. 
 
 ```
     git log
 ```
 
+Lembra do exemplo em que estavamos trabalhando? O retorno do comando `git log` para aquele repositório é o seguinte.
+
+```
+Author: "Seu user.name" <"seu user.email">
+Date:   Wed Feb 1 16:52:39 2023 -0300
+
+    Este é meu primeiro commit no arquivo teste.txt
+
+```
+
+Olha só, apareceu alguma coisa. O comando me retornou um commit, feito pelo autor que tem o user.name e que tem o user.email, e foi feito na data mostrada. Legal né? 
+
+
 ### Mostrar historico de commits detalhado 
 
-
-Além das informações do comando anterior, este mostra mais algumas informações importantes
+Na mesma vibe (Ooops ... quero dizer, seguindo a linha de raciocinio) do comando anterior, podemos mostrar no nosso terminal um histórico detalhado dos nossos commits. Bora lá? Dessa vez eu vou deixar você executar o comando no seu terminal. 
 
 ```
     git log --decorate
 ```
 
+Mas, e ai? Mostrou a mesma coisa do que foi mostrado com o `git log` convencional? Calma, quando você estiver trabalhando em um projeto um pouco mais completo, testa o comando, pra ver o que te retorna de diferente do `git log` tradicional. 
+
 ### Listar todos os commmits por autor
 
+Olha só que legal, se passarmos o parametro `--author="Leonardo"` teremos todos os commits feitos pelo author Leonardo. Legal né? É um comando legal quando voce está gerenciando um projeto ou trabalhando com outras pessoas e quer ver suas proprias alterações. 
 
 ```
     git log --author="<author name>"
