@@ -26,9 +26,9 @@ Segue a estrutura do documento:
     - [Listar todos os commmits por autor](#listar-todos-os-commmits-por-autor)
     - [Lista o historico resumido por autor](#lista-o-historico-resumido-por-autor)
     - [Mostra historico gráfico de commits](#mostra-historico-gráfico-de-commits)
-    - [Verificar mudanças em um arquivo já commitado](#verificar-mudanças-em-um-arquivo-já-commitado)
     - [Verificar mudanças em um arquivo antes de ser commitado](#verificar-mudanças-em-um-arquivo-antes-de-ser-commitado)
     - [Mostrar somente o nome do arquivo que foi modificado](#mostrar-somente-o-nome-do-arquivo-que-foi-modificado)
+    - [Verificar mudanças em um arquivo já commitado](#verificar-mudanças-em-um-arquivo-já-commitado)
     - [Commit em arquivo que já existiu](#commit-em-arquivo-que-já-existiu)
   - [Desfazendo alterações](#desfazendo-alterações)
     - [Voltar ao status de um arquivo para antes da edição](#voltar-ao-status-de-um-arquivo-para-antes-da-edição)
@@ -275,8 +275,7 @@ Olha só que legal, se passarmos o parametro `--author="Leonardo"` teremos todos
 
 ### Lista o historico resumido por autor
 
-
-Lista commits mostrando quais autores fizeram commits, quantos commits cada autor fez e quais foram esses commits
+Imagine que você quer um resumo do seu histórico onde seja mostrado na tela uma lista de autores, quantos commits cada um fez e quais foram esses commits, com `shotlog` você consegue esse histórico, basta executar o comando abaixo no seu terminal.
 
 ```
     git shortlog
@@ -285,48 +284,55 @@ Lista commits mostrando quais autores fizeram commits, quantos commits cada auto
 ### Mostra historico gráfico de commits
 
 
-Mostra de forma gráfica o que está acontecendo com os branchs no repositorio
+O Git também pode te retornar o histórico de maneira gráfica, mostrando os pontos em que seu projeto se ramificou em mais de um branch e onde cada um se encontrou ou se encontrou com o branch principal. Se você tiver somente um branch no seu projeto esse não é um comando muito interessante, porém, se você gosta de ramificar seu projeto para testar novas funcionalidades ou está trabalhando com várias pessoas ao mesmo tempo e quer saber de forma visual onde cada ramo do projeto se criou, esse é um comando muito util.
 
 ```   
     git log --graph
 ```
 
-### Verificar mudanças em um arquivo já commitado
-
-
-É possivel ver o que foi modificado em um arquivo usando a hash do commit
-
-```
-    git show <hash>
-```
-
 ### Verificar mudanças em um arquivo antes de ser commitado
 
-
-Mostra as modificações realizadas em um determinado arquivo antes de ele ser adicionado em staged
+Algumas vezes você está brincando com aquele projeto, com várias funcionalidades diferentes, em vários arquivos diferentes e acaba deixando tudo pra commitar depois, quando terminar tudo. Enfim, é bem provavel que você acabe sem lembrar o que você mudou em cada arquivo e onde mudou (se você for que nem eu). Pensando nisso (provavelmente) o Git implementa tambem uma função chamada `diff`, essa função te retorna um resumo do arquivo destacando em que pontos houve mudança e em que pontos tudo se manteve inalterado. 
 
 ```
     git diff <filename>
 ```
 
+Lembrando que filaname é opcional. Caso você não especifique esse parametro, o git irá retornar para você um resumo de todas as alterações que houve em todos os arquivos alterados na arvore do seu projeto.
+
 ### Mostrar somente o nome do arquivo que foi modificado
+
+Taí um comando que eu acho desnecessário, mas claro, é só minha opinião. Lembrando que essa opinião também é formada com base na pouca experiência que tive com essa ferramenta e com projetos no geral. Então, bora lá? Esse comando aqui te mostra a lista de todos os arquivos que foram motificados, somente os nomes. 
 
 ```
     git diff --name-only
 ```
 
+### Verificar mudanças em um arquivo já commitado
+
+Commitei meu arquivo, mas não lembro se as alterações realmente batem com a minha descrição, e ai, como faço pra conferir as mudanças em um arquivo já commitado? Fácil, usa um git show no teu arquivo, ou, no caso, na hash do teu commit.
+
+```
+    git show <hash>
+```
+
+Lembrando que a hash do commit também é opcional. Mas lembre que é mais fácil de ler as alterações feitas em um só arquivo por vez.
+
 ### Commit em arquivo que já existiu
 
-Se o commit for feito em um arquivo que ja existiu podemos fazer 
+É como o meme "Copia mas não faz igual". Eu nem sei bem qual a diferença entre esse comando e o comando `git commit -m "mensagem"`, mas enfim, existe, funciona e faz praticamente a mesma coisa.
 
 ```
     git commit -am "<mesage>"
 ```
 
+Dizem que esse comando é serve pra commitar arquivos recem adicionados no seu projeto (reza a lenda ...).
+
 ## Desfazendo alterações
 
 ### Voltar ao status de um arquivo para antes da edição
 
+Fiquei empolgado no meio do projeto e fiz algumas alterações em alguns arquivos no meu projeto e tudo quebrou mas eu não lemnbro bem o que eu de fato alterei. Que tal voltar seu arquivo para o que era antes das alterações? O papai git deixa ... 
 
 ```
     git checkout <filename>
@@ -334,13 +340,17 @@ Se o commit for feito em um arquivo que ja existiu podemos fazer
 
 ### Remover arquivos da zona de staged 
 
+E quando eu adiciono algum arquivo na área de staged (pronto pra commitar) mas não era minha intenção? Eu quero commitar os outros arquivos, mas não aquele, o que eu faço? Roda o comando abaixo que é sal ... 
 
 ```
     git reset HEAD <filename> 
 ```
 
+Lembra de colocar o nome direitinho do arquivo que você quer remover da zona de staged 😜
+
 ### Remover arquivos ja commitados
 
+Commitei um tal arquivo mas não era bem isso que queria fazer, e agora? Os três comandinhos abaixo podem te ajudar, mas sempre lembre "com grandes poderes vem grandes responsabilidades". 
 
 ```
     ex1: git reset --soft <hash>
@@ -352,20 +362,25 @@ Se o commit for feito em um arquivo que ja existiu podemos fazer
 * --mixed: retorna o arquivo para zona de modified (pronto para addicionar ao stagied e commitar - ainda com as alterações do arquivo)
 * --hard: mata o commit e todas as alterações feitas no arquivo
 
-Obs: ao escolher uma hash, sempre pegamos a hash anterior ao commit que acabamos de fazer, pois é o ponto ao 
-qual desejamos retornar
+Obs: e esse hash ai, qual eu escolho? Se eu quero desfazer uma alteração commitada, eu vou pegar o hash anterior ao hash do commit que eu quero "matar" 🤐
 
 ### Reverter um commit
 
+Parece que tive um déja-vu. Tá, eu usaria qualquer um dos comandos acima, mas existe, e tai. 
 
 ```
     git revert <hash_do_commit>
 ```
 
+Tá, eu fiquei curioso e fui procurar a documentação do comando, e olha, é um comando legalzin se tu quer manter teu histórico intácto. Vide a descrição inicial abaixo:
+
+O git revertcomando pode ser considerado um comando do tipo 'desfazer', porém não é uma operação de desfazer tradicional. Em vez de remover o commit do histórico do projeto, ele descobre como inverter as alterações introduzidas pelo commit e anexa um novo commit com o conteúdo inverso resultante. Isso evita que o Git perca o histórico, o que é importante para a integridade do seu histórico de revisões e para uma colaboração confiável. [fonte](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert#:~:text=The%20git%20revert%20command%20is%20a%20forward%2Dmoving%20undo%20operation,in%20regards%20to%20losing%20work.)
+
 ## Repositorio Remoto
 
 ### Mostra os respositorios remotos que existem
 
+Eu to mandando minhas alterações pra onde? Sei lá, vou dar um `git remote` aqui pra saber
 
 ```
     git remote 
@@ -373,11 +388,15 @@ qual desejamos retornar
 
 ### Mostra os respositorios remotos que existem detalhado
 
+Eu to mandando minhas alterações pra onde? Sei lá, vou dar um `git remote` aqui pra saber (detalhado rs)
+
 ```
     git remote -v
 ```
 
 ### Enviar para o repositorio remoto
+
+"Tá, terminei de commitar, to cansado e quero ir tomar um cafezin pra terminar o dia". Tudo bem, mas não esqueça de fazer o que todo programador deve fazer (quebrar o sistema que ele tá trabalhando ... brinks) subir as alterações pro repositório remoto (Vai que tua máquina resolve se matar de hoje pra amanhã, pelo menos teu trabalho não se perdeu).
 
 ```
     git push [origin] [master]
@@ -386,26 +405,33 @@ qual desejamos retornar
 * origin: nome do repositorio remoto
 * master: branch que estou no momento
 
-Obs.: Tanto origin quanto master são opcionais, um git pull também funciona.
+Obs.: Tanto origin quanto master são opcionais, um `git pull` também funciona.
 
 ### Resgatar alterações do meu repositorio remoto
 
+Olha bem, esse comando serve pra resgatar as alterações que outros membros da equipe fizeram antes de você ou se voce quebrou tanto o código que decidiu só apagar tudo e quer resgatar uma versão do projeto que ainda funcione.
 
 ```
     git pull [origin] [master]
 ```
+Obs.: Tanto origin quanto master são opcionais, um `git pull` também funciona.
+
 
 ### Clonar todo um repositorio meu ou de terceiros
 
+"Olha, um projeto legal. Quero trabalhar em cima dele", faz um clone ai. Também serve pro caso de "Onde diabos eu fiz o backup do meu repositorio local?", faz um clone, ele resolve.  
+
 ```
-    git clone <url do repositorio> [<outro nome>]
+    git clone <url do repositorio>
 ```
 
 ## Branchs
 
-Branchs são ponteiros moveis que lavam a um commit
+Branchs são ponteiros moveis que lavam a um commit (é, são ponteiros 😑)
 
 ### Criando um branch
+
+"Tá, pensei numa coisa aqui, mas não queria quebrar muito meu projeto". Você pode resolver esse problema, meu jovem! Faz um branch, ou ramo, e codifica o que você quiser por lá. (Mas se fizer besteira demais, não faz um merge, por favor)
 
 ```
     git checkout -b <nome do branch>
@@ -413,6 +439,7 @@ Branchs são ponteiros moveis que lavam a um commit
 
 ### Mostrar os branchs que eu tenho no respositorio
 
+Tá, você é uma pessoa hiperativa, quer fazer várias coisas de uma vez, criou vários branchs e não sabe mais quantos ou quais são. O comando abaixo ajuda você.
 
 ```    
     git branch
