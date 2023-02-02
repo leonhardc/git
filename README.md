@@ -447,6 +447,7 @@ Tá, você é uma pessoa hiperativa, quer fazer várias coisas de uma vez, criou
 
 ### Mudar para outro branch no repositorio
 
+Você cansou de fazer aquelas modificações em paralelo ao seu projeto principal e agora quer voltar para o seu branch principal? Dá também, é só usar o comando abaixo: 
 
 ```
     git checkout <nome do branch>
@@ -454,13 +455,13 @@ Tá, você é uma pessoa hiperativa, quer fazer várias coisas de uma vez, criou
 
 ### Deletar branch que não é mais necessário
 
+Agora que você fez o que tinha que fazer, mas acha que as alterações que você fez naquele branch não vão encaixar muito bem no seu projeto principal. Nesse caso, voce pode simplesmente apagar aquele branch com o `-D` (Delete).
 
 ```
     git branch -D <nome do branch>
 ```
 
 ### Unir branchs
-
 
 Existem basicamente duas maneiras de unir dois branchs, o 'merge' e o 'rebase'. Eles fazem basicamente a mesma coisa, mas só que de jeitos totalmente diferentes. É bom saber a diferença.
 
@@ -477,7 +478,6 @@ Ao fazer um merge se cria um um outro commit no ramo principal, onde esse commit
 
 #### Rebase 
 
-
 Recoloca tudo que estava no branch separado e coloca no começo da fila 'matando' os commits que estavam no branch que foi feito o rebase
 
 * Pros: Evita commits extras; Histórico Linear;
@@ -491,7 +491,9 @@ Recoloca tudo que estava no branch separado e coloca no começo da fila 'matando
 
 ### Salvando alterações em stash
 
-Comando que salva as modificações de um arquivo temporariamente dentro de um stash, para que não seja necessário fazer um commit, caso se queira mudar de um branch para outro.
+Esse próximo comando é uma mão na roda quando você tem alterações no repositório local mas não quer fazer commit ainda. Dá pra pegar essas alterações, salvá-las num arquivo temporário e depois, só voltar com elas, ou excluí-las caso queira.
+
+Esse comando salva as modificações de um arquivo temporariamente dentro de um stash, para que não seja necessário fazer um commit, caso se queira mudar de um branch para outro.
 
 ```
     git stash
@@ -499,11 +501,15 @@ Comando que salva as modificações de um arquivo temporariamente dentro de um s
 
 ### Aplicar as mudanças guardadas anteriormente em stash
 
+Lembra que `git stash` salva suas alterações em um arquivo temporário? O parametro `aplly` aplica as modificações que você salvou anteriormente no stash. 
+
 ```
     git stash apply
 ```
 
 ### Listar todos os stashs que se está fazendo
+
+O parametro `list` é usado pra listar todos os arquivos temporários que você tem salvo em stash.
 
 ```
     git stash list
@@ -511,13 +517,19 @@ Comando que salva as modificações de um arquivo temporariamente dentro de um s
 
 ### Limpar tudo que está no stash
 
+Já o parametro `clear` serve pra você limpar os arquivos temporários que você tem salvos em stash.
+
 ```
     git stash clear
 ```
 
 ## Configurar alias/abreviação em um comando git
 
+Os comandos seguintes servem para o contexto de produtividade.
+
 ### Configurando alias do comando status com s
+
+O Git te permite configurar abreviações para comandos, por exemplo, no comando abaixo, configurei o alias/abreviação `s` para o parametro `status`.
 
 ```
     git config --global alias.s status
@@ -533,19 +545,16 @@ Depois dessa configuração acima podemos chamar o comando status como
 
 ### Passar uma tag com uma anotação
 
+Da mesma forma que a maioria dos VCSs, o Git tem a habilidade de marcar pontos específicos na história como sendo importantes. Normalmente as pessoas usam essa funcionalidade para marcar pontos onde foram feitas releases (v1.0 e assim por diante). Nessa sessão, você irá aprender como listar as tags existentes, como criar novas tags e quais são os diferentes tipos de tags. [fonte](https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Criando-Tags)
+
 ```
     git tag -a [<numero-da-versão>] -m "<anotação>"
 ```
 
 ### Subir uma tag
 
+Semelhante ao commit, posso subir uma tag para o repositório remoto.
+
 ```
     git push origin master --tags
 ```
-
-
-
-
-
-
-
