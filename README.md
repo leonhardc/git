@@ -63,13 +63,13 @@ Segue a estrutura do documento:
 
 ## Configurando o git
 
-Depois de baixado, precisamos instalar e configurar o git. Abaixo foram listados comandos que podem ser usados para configurar o git a primeiro momento.
+Depois de baixado, precisamos instalar e configurar o git. Abaixo foram listados comandos que podem ser usados para configurar a primeiro momento o Git.
 
 O git trabalha as configurações em três diferentes escopos de atuação:
 
-1. --system: válido para todos os usuários no sistema e todos os seus repositórios;
-2. --global: válido somente para seu usuário e os repositórios desse usuário;
-3. config: válido somente para o repositório que se está executando esse comando;
+1. **--system**: válido para todos os usuários no sistema e todos os seus repositórios;
+2. **--global**: válido somente para seu usuário e os repositórios desse usuário;
+3. **config**: válido somente para o repositório onde você se encontra no momento;
 
 A seguir eu tentei listar de forma simples três comandos que podemos usar para configurar username, email e o editor principal que podemos usar no git, lembrando que este ultimo pode ser configurado no momento da instalação.
 
@@ -77,7 +77,7 @@ A seguir eu tentei listar de forma simples três comandos que podemos usar para 
 
 ### Configurando usuário/username git
 
-Troque a string "< username >" pelo nome de seu usuário. Lembrando que, ao utilizar o parametro --global estamos configurando este usuário para todos respositórios do usuário do computador. 
+Troque `"<username>"` pelo nome de seu nome de usuário. Lembrando que, ao utilizar o parametro --global estamos configurando este usuário para todos respositórios do usuário do computador. 
 
 ```
     git config --global user.name "<username>"
@@ -85,7 +85,7 @@ Troque a string "< username >" pelo nome de seu usuário. Lembrando que, ao util
 
 ### Configurando email
 
-Troque a string "< exemple@email.com >" pelo seu email. 
+Troque a string `"<exemple@email.com>"` pelo seu email. 
 
 ```
     git config --global user.email "<exemple@email.com>"
@@ -93,15 +93,15 @@ Troque a string "< exemple@email.com >" pelo seu email.
 
 ### Configurar editor principal do git
 
-Esse passo é importante caso se queira usar um editor de texto diferente do padrão do git. Para fazer isso basta trocar < editor > pelo nome do seu editor favorito.
+Esse passo é importante caso você queira usar um editor de texto diferente do padrão do git. Para fazer isso basta trocar `<editor>` pelo nome do seu editor favorito.
 
 ```
     git config --global core.editor <editor>
 ```
 
-### Exibe usuário configurado no git
+## Exibindo nossas configurações do Git
 
-Esse e os próximos dois comandos funcionam como uma checagem, para vermos se está tudo Ok com as informações que acabamos de configurar. 
+### Exibe usuário configurado no Git
 
 No comando abaixo exibimos o nome do nosso usuário
 
@@ -109,7 +109,7 @@ No comando abaixo exibimos o nome do nosso usuário
     git config user.name
 ```
 
-### Exibe email configurado no git
+### Exibe email configurado no Git
 
 Já no comando abaixo, exibimos o email do usuário que foi configurado.
 
