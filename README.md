@@ -166,7 +166,9 @@ Olha, logo após adicionarmos ou modificarmos um ou vários arquivos do nosso pr
 
 Então, digamos que queremos adicionar um arquivo chamado teste.txt no nosso repositório e fazê-lo ter uma mensagem "testando o comando git status" basta digitarmos no terminal:
 
-`echo "Testando o comando git status" >> teste.txt`
+```
+    echo "Testando o comando git status" >> teste.txt
+```
 
 Logo depois de executarmos o comando acima veremos que ele já aparece na nossa arvore do respositório como um arquivo adicionado, para ver isso basta executar o comando `git status`. Uma mensagem parecida com a seguinte será exibida: 
 
