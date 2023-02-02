@@ -202,7 +202,6 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
         new file:   teste.txt
-
 ```
 
 Parece que algo de diferente foi exibido. Vamos ver o que foi? Então, logo abaixo da mensagem `Changes to be commited:` vemos o nosso arquivo novamente. E ai, o que aconteceu? O que aconteceu foi que seu arquivo teste.txt digievoluiu de untracked file para ready to commit file (arquivo pronto para ser commitado). E ai, o que eu faço agora? Simples, commita ele ... o que pode dar de errado? (rs)
@@ -222,9 +221,9 @@ Vamos praticar usando o nosso exemplo de antes, o tal do teste.txt? Pois bem, ex
 Provavelmente, ao teclar ENTER, será mostrada uma mensagem parecida com a seguinte no seu terminal:
 
 ```
-[master (root-commit) fa1a61d] Este é meu primeiro commit no arquivo teste.txt
- 1 file changed, 1 insertion(+)
- create mode 100644 teste.txt
+    [master (root-commit) fa1a61d] Este é meu primeiro commit no arquivo teste.txt
+    1 file changed, 1 insertion(+)
+    create mode 100644 teste.txt
 ```
 
 Pronto, commit feito! Agora já pode partir e implementar novas funcionalidades, criar novos módulos ou novas interfaces. Se seguir esse ritualzinho básico de `git status`, `git add` e `git commit` voce já faz muita coisa. 
@@ -245,11 +244,10 @@ O comando `git log` lista todos os commits que voce já fez naquele repositório
 Lembra do exemplo em que estavamos trabalhando? O retorno do comando `git log` para aquele repositório é o seguinte.
 
 ```
-Author: "Seu user.name" <"seu user.email">
-Date:   Wed Feb 1 16:52:39 2023 -0300
+    Author: "Seu user.name" <"seu user.email">
+    Date:   Wed Feb 1 16:52:39 2023 -0300
 
-    Este é meu primeiro commit no arquivo teste.txt
-
+        Este é meu primeiro commit no arquivo teste.txt
 ```
 
 Olha só, apareceu alguma coisa. O comando me retornou um commit, feito pelo autor que tem o user.name e que tem o user.email, e foi feito na data mostrada. Legal né? 
