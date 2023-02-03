@@ -11,8 +11,9 @@ Segue a estrutura do documento:
     - [Configurando usuário/username git](#configurando-usuáriousername-git)
     - [Configurando email](#configurando-email)
     - [Configurar editor principal do git](#configurar-editor-principal-do-git)
-    - [Exibe usuário configurado no git](#exibe-usuário-configurado-no-git)
-    - [Exibe email configurado no git](#exibe-email-configurado-no-git)
+  - [Exibindo nossas configurações do Git](#exibindo-nossas-configurações-do-git)
+    - [Exibe usuário configurado no Git](#exibe-usuário-configurado-no-git)
+    - [Exibe email configurado no Git](#exibe-email-configurado-no-git)
     - [Exibe todas as configurações do git](#exibe-todas-as-configurações-do-git)
   - [Inicializando um repositorio](#inicializando-um-repositorio)
     - [Criar uma pasta](#criar-uma-pasta)
@@ -59,6 +60,7 @@ Segue a estrutura do documento:
   - [Criando tags](#criando-tags)
     - [Passar uma tag com uma anotação](#passar-uma-tag-com-uma-anotação)
     - [Subir uma tag](#subir-uma-tag)
+  - [Referências](#referências)
 
 
 ## Configurando o git
@@ -558,3 +560,9 @@ Semelhante ao commit, posso subir uma tag para o repositório remoto.
 ```
     git push origin master --tags
 ```
+
+## Referências
+
+* [Documentação Git](https://git-scm.com/docs/git/pt_BR)
+* [Git para iniciantes (Vídeo)](https://www.youtube.com/watch?v=IBClN6VpJDw&list=PLlAbYrWSYTiPA2iEiQ2PF_A9j__C4hi0A&ab_channel=WillianJusten)
+* [Git tutorial - Atlassian](https://www.atlassian.com/git/tutorials)
