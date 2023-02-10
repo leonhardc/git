@@ -480,14 +480,22 @@ Ao fazer um merge se cria um um outro commit no ramo principal, onde esse commit
 
 #### Rebase 
 
-Recoloca tudo que estava no branch separado e coloca no começo da fila 'matando' os commits que estavam no branch que foi feito o rebase
+Recoloca tudo que estava no branch separado e coloca no começo da fila 'matando' os commits que estavam no branch onde foi feito o rebase
 
 * Pros: Evita commits extras; Histórico Linear;
 * Contra: Perca de ordem cronológica; Histórico fica poluído
 
+A depender da técnica que você use, e organização que seja feita para fazer merge na branch principal (e.g.: master), esses contras não existem, aliás é o contrário, a história de commits fica mais fácil de entender em relação ao fluxo de desenvolvimento.
+
+Segundo [Manoel Vivela Machado](https://www.linkedin.com/in/lerax/) (um baita de um desenvolvedor):
+
+   " nunca fazer rebase em branchs públicas e compartilhadas (master/develop etc), mas apenas em feature-branchs, assim não rola conflito com rebase e se você ainda fizer squash por feature-branch fica mais fácil de fazer revert, gerar changelog automático por release etc."
+
 ```
     git rebase <branch-name>
 ```
+
+
 
 ## Salvando modificações temporariamente
 
