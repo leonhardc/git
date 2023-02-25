@@ -37,6 +37,7 @@ Segue a estrutura do documento:
     - [Remover arquivos ja commitados](#remover-arquivos-ja-commitados)
     - [Reverter um commit](#reverter-um-commit)
   - [Repositorio Remoto](#repositorio-remoto)
+    - [Adicionando um repositório remoto no seu projeto](#adicionando-um-repositório-remoto-no-seu-projeto)
     - [Mostra os respositorios remotos que existem](#mostra-os-respositorios-remotos-que-existem)
     - [Mostra os respositorios remotos que existem detalhado](#mostra-os-respositorios-remotos-que-existem-detalhado)
     - [Enviar para o repositorio remoto](#enviar-para-o-repositorio-remoto)
@@ -379,6 +380,37 @@ Tá, eu fiquei curioso e fui procurar a documentação do comando, e olha, é um
 O git revertcomando pode ser considerado um comando do tipo 'desfazer', porém não é uma operação de desfazer tradicional. Em vez de remover o commit do histórico do projeto, ele descobre como inverter as alterações introduzidas pelo commit e anexa um novo commit com o conteúdo inverso resultante. Isso evita que o Git perca o histórico, o que é importante para a integridade do seu histórico de revisões e para uma colaboração confiável. [fonte](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert#:~:text=The%20git%20revert%20command%20is%20a%20forward%2Dmoving%20undo%20operation,in%20regards%20to%20losing%20work.)
 
 ## Repositorio Remoto
+
+### Adicionando um repositório remoto no seu projeto
+
+Eu conheço dois jeitos de usar um repositório remoto no seu projeto, o primeiro é criando um repositório local e depois linkando com seu repositório remoto e o segundo é criando um repositório remoto e fazendo um clone na sua máquina. 
+
+No primeiro caso você deve que ter um repositório local, devidamente inicializado, e um repositório remoto criado na sua plataforma de hospedagem preferida (GitHub, BitBucket e por ai vai). Não sabe inicializar um repositório? 
+
+Fácil, primeiro crie um diretório na sua máquina em qualquer lugar, abra o terminal, o bash do git ou faça tudo pela sua IDE. Eu acho mais fácil usando o bash do git (porquê é colorido rs) e é assim que vou ensinar aqui, enfim ... Seguindo em frente dentro do seu terminal acesse o diretório que você acabou de criar e que será seu repositório local. Estando dentro do diretório, execute o comando `git init` e vualá, seu repositório local está criado. Em seguida podemos linkar nosso repositório remoto com seu repositório local. 
+
+No github, dentro seu repositório remoto, você pode visualizar um botão verde, escrito ` <> Code`, clique nele e copie o link https. Com isso feito, basta executar o comando abaixo no seu terminal (ou no meu caso, no git bash)
+
+```
+    git remote add origin master <cole aqui o link do seu repositório remoto>
+```
+
+Vamos só revisar as partes do comando acima:
+
+* _git remote add_: Você está dizendo ao git que quer adicionar um repositório remoto.
+* _origin_: Muito utilizado por convenção _origin_ é somente o nome do seu repositório remoto e claro, pode ser qualquer outro nome que você desejar, está ai simplesmente para fins de identificação. 
+* _master_: A identificação do seu branch principal. Por convenção também é usado o master mas acredito que em algum projeto envolvendo muitas pessoas o nome desse branch possa mudar. 
+* _url do repositório remoto_: Por ultimo, é para onde você quer que o git mande suas alterações. 
+
+Uma pergunta que me vinha na cabeça quando eu estava estudando sobre git era se eu poderia ter mais de um repositório remoto para o mesmo repositório local. A resposta é sim, você pode, eu posso e todos nós podemos. Mas cuidado, é fácil se confundir para onde você está mandando as alterações no seu projeto, então fique atento.
+
+O segundo caminho para linkar um repositório local a um repositório remoto (e eu não sei se isso é uma boa prática, provavelmente não) é criando primeiro um repositório remoto e depois usando o comando abaixo
+
+```
+    git clone <url do repositório remoto>
+```
+
+Escolha um diretório em que você deseja que fique seu repositório local, acesse esse diretório com o seu terminal e execute o comando acima. Pronto, depois que o git terminar de fazer o clone do repositório remoto você terá seu repositório local e você nem precisa se preocupar em executar o comando `git remote add`, porque já está tudo implicito no `git clone`.
 
 ### Mostra os respositorios remotos que existem
 
