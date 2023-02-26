@@ -38,6 +38,7 @@ Segue a estrutura do documento:
     - [Reverter um commit](#reverter-um-commit)
   - [Repositorio Remoto](#repositorio-remoto)
     - [Adicionando um repositório remoto no seu projeto](#adicionando-um-repositório-remoto-no-seu-projeto)
+    - [Remover repositórios remotos](#remover-repositórios-remotos)
     - [Mostra os respositorios remotos que existem](#mostra-os-respositorios-remotos-que-existem)
     - [Mostra os respositorios remotos que existem detalhado](#mostra-os-respositorios-remotos-que-existem-detalhado)
     - [Enviar para o repositorio remoto](#enviar-para-o-repositorio-remoto)
@@ -411,6 +412,16 @@ O segundo caminho para linkar um repositório local a um repositório remoto (e 
 ```
 
 Escolha um diretório em que você deseja que fique seu repositório local, acesse esse diretório com o seu terminal e execute o comando acima. Pronto, depois que o git terminar de fazer o clone do repositório remoto você terá seu repositório local e você nem precisa se preocupar em executar o comando `git remote add`, porque já está tudo implicito no `git clone`.
+
+### Remover repositórios remotos
+
+Você deve estar se perguntando: "E se eu configurar errado meu repositório remoto e não conseguir fazer um pull ou push?". Se por acaso você, assim como eu, conseguir causar algum conflito inicial na configuração dos seus repositórios (local -> remote) e já fez alguns commits no seu repositório local e só está querendo subir suas alterações sem problema mas o git não está deixando, você pode resolver seus conflitos criando um novo repositório remoto sem nada dentro (assim não vai ter o que fazer com o pull) e remover a referencia do antigo repositório com comando abaixo:
+
+```
+    git remote remove <nome do repositório>
+```
+
+Lembra do passo [Adicionando um repositório remoto no seu projeto](#adicionando-um-repositório-remoto-no-seu-projeto)? Lembra que você configurou um nome para o seu repositório remoto, que no exemplo foi nomeado como `origin`, pois bem, apague-o e adicione o seu novo repositório remoto, com o mesmo nome se desejar.
 
 ### Mostra os respositorios remotos que existem
 
