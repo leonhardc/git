@@ -23,6 +23,7 @@ Segue a estrutura do documento:
     - [Adicionar um arquivo ou arquivos em um grupo de versionamento](#adicionar-um-arquivo-ou-arquivos-em-um-grupo-de-versionamento)
     - [Commitar um arquivo ou diretorio](#commitar-um-arquivo-ou-diretorio)
     - [Mostra todos os commits já feitos](#mostra-todos-os-commits-já-feitos)
+    - [Mostrando todos os commits de maneira um pouco mais interessante](#mostrando-todos-os-commits-de-maneira-um-pouco-mais-interessante)
     - [Mostrar historico de commits detalhado](#mostrar-historico-de-commits-detalhado)
     - [Listar todos os commmits por autor](#listar-todos-os-commmits-por-autor)
     - [Lista o historico resumido por autor](#lista-o-historico-resumido-por-autor)
@@ -40,7 +41,7 @@ Segue a estrutura do documento:
     - [Adicionando um repositório remoto no seu projeto](#adicionando-um-repositório-remoto-no-seu-projeto)
     - [Remover repositórios remotos](#remover-repositórios-remotos)
     - [Mostra os respositorios remotos que existem](#mostra-os-respositorios-remotos-que-existem)
-    - [Mostra os respositorios remotos que existem detalhado](#mostra-os-respositorios-remotos-que-existem-detalhado)
+    - [Mostra os respositorios remotos existentes de maneira detalhada](#mostra-os-respositorios-remotos-existentes-de-maneira-detalhada)
     - [Enviar para o repositorio remoto](#enviar-para-o-repositorio-remoto)
     - [Resgatar alterações do meu repositorio remoto](#resgatar-alterações-do-meu-repositorio-remoto)
     - [Clonar todo um repositorio meu ou de terceiros](#clonar-todo-um-repositorio-meu-ou-de-terceiros)
@@ -256,7 +257,23 @@ Lembra do exemplo em que estavamos trabalhando? O retorno do comando `git log` p
         Este é meu primeiro commit no arquivo teste.txt
 ```
 
-Olha só, apareceu alguma coisa. O comando me retornou um commit, feito pelo autor que tem o user.name e que tem o user.email, e foi feito na data mostrada. Legal né? 
+Olha só, apareceu alguma coisa. O comando me retornou um commit, feito pelo autor que tem o user.name e que tem o user.email, e foi feito na data mostrada. Legal né?
+
+
+### Mostrando todos os commits de maneira um pouco mais interessante
+
+As vezes um simples `git log` não te trás as informações de maneira visualmente agradáveis, o que pode dificultar o seu entendimento sobre o que está de fato acontecendo no seu repositório, e as vezes pode fazer você se perder um pouco. Há pouco tempo, lendo uma matéria sobre git, descobri que é possivel modificar alguns comandos git para que você possa trazer as informações mais necessárias para você e claro de uma forma mais agradável visualmente.
+
+Se liga no comando abaixo, usando `--graphe` e `--format` podemos obter rapidamente uma visão resumida dos commits em nosso projeto e formatá-los de uma forma agradável.
+
+```
+git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all
+```
+`--graph` adiciona o gráfico de árvore à esquerda.
+
+`--format` permite que você personalize o formato de seus logs. Existem formatos predefinidos para escolher ou você pode escrever seu próprio formato como no exemplo acima. 
+
+`--all` inclui todas as referências, tags e branches nos logs (incluindo branches remotos). Você pode não querer tudo , então ajuste isso como achar melhor.]
 
 
 ### Mostrar historico de commits detalhado 
@@ -321,6 +338,16 @@ Commitei meu arquivo, mas não lembro se as alterações realmente batem com a m
 ```
 
 Lembrando que a hash do commit também é opcional. Mas lembre que é mais fácil de ler as alterações feitas em um só arquivo por vez.
+
+O `git show` também te permite ver as alterações de um arquivo de uma meneira diferente. No seu projeto execute o comando abaixo:
+
+```
+git show <commit> --stat
+```
+
+Esse comando te mostra um resumo do que está acontecendo nesse arquivo em especifico. Substitua `<commit>` pela hash do seu commit e veja, por exemplo quantas novas linhas foram adicionadas no seu arquivo e quantas foram excluidas.
+
+Usando o sinalizador `--stat` você verá o resumo do commit junto com os arquivos que foram alterados e detalhes sobre como eles foram alterados.
 
 ### Commit em arquivo que já existiu
 
@@ -431,7 +458,7 @@ Eu to mandando minhas alterações pra onde? Sei lá, vou dar um `git remote` aq
     git remote 
 ```
 
-### Mostra os respositorios remotos que existem detalhado
+### Mostra os respositorios remotos existentes de maneira detalhada
 
 Eu to mandando minhas alterações pra onde? Sei lá, vou dar um `git remote` aqui pra saber (detalhado rs)
 
@@ -617,3 +644,4 @@ Semelhante ao commit, posso subir uma tag para o repositório remoto.
 * [Documentação Git](https://git-scm.com/docs/git/pt_BR)
 * [Git para iniciantes (Vídeo)](https://www.youtube.com/watch?v=IBClN6VpJDw&list=PLlAbYrWSYTiPA2iEiQ2PF_A9j__C4hi0A&ab_channel=WillianJusten)
 * [Git tutorial - Atlassian](https://www.atlassian.com/git/tutorials)
+* [Use Git like a senior engineer](https://levelup.gitconnected.com/use-git-like-a-senior-engineer-ef6d741c898e)
